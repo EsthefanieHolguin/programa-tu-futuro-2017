@@ -4,6 +4,7 @@
 package cl.accenture.curso_java.guia_trece;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -84,6 +85,29 @@ public class CarroDeCompra {
 	
 	/**
 	 * 
+	 */
+	public void ordernarPorNombre(){
+		Collections.sort( this.productos, new OrdenarPorNombre() );
+	}
+	
+	/**
+	 * 
+	 */
+	public void ordernarPorIdentificador(){
+		Collections.sort( this.productos, new Comparator<Producto>() {
+
+			public int compare(Producto o1, Producto o2) {
+				if( o1.getIdentificador() > o2.getIdentificador())
+					return 1;
+				if( o1.getIdentificador() < o2.getIdentificador())
+					return -1;
+				return 0;
+			}
+		}  );
+	}
+	
+	/**
+	 * 
 	 * @return
 	 */
 	public int calcularPrecioTotal(){
@@ -95,12 +119,24 @@ public class CarroDeCompra {
 	}
 	
 	/**
-	 * 
+	 * Funciona por que la clase producto
+	 * implementa el comparator segun su precio
 	 * @return
 	 */
 	public Producto obtenerProductoMasCaro(){
 		return Collections.max(this.productos);
 	}
+	
+	
+	/**
+	 * Funciona por que la clase producto
+	 * implementa el comparator segun su precio
+	 * @return
+	 */
+	public Producto obtenerProductoMasBarato(){
+		return Collections.min(this.productos);
+	}
+	
 	
 	/**
 	 * 
