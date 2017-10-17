@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+body{
+	background-color: black;
+	color:green; 
+}
+table{
+	margin:10px;
+	background-color: white;
+	color: black;
+}
+
+table thead th {
+	
+}
+
+.tablaAmarilla{
+	background-color: yellow;
+}
+
+.tabla1{
+	
+}
