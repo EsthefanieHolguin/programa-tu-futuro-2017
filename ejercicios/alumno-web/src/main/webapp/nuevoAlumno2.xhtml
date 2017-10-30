@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+	<title>hola mundo</title>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+
+	<style type="text/css">
+		.barra-lateral {
+		    position: fixed;
+		    top: 50px;
+		    bottom: 0;
+		    padding: 0px;
+		    padding-top: 20px;
+		    background-color: #ebebeb;
+		    border-right: 1px solid silver;
+		}
+	</style>
+</head>
+<body>
+	<ui:include src="/WEB-INF/barraSuperior.xhtml" />
+
+	<div class="container-fluid">
+		<div class="row">
+			<ui:include src="/WEB-INF/barraLateral.xhtml" />
+			<div class="col-xs-12 col-sm-10 col-sm-offset-2">
+				
+				
+				<div class="col-md-4" style="border:1px solid black;" >
+				<h3>Ingresar un alumno</h3>
+				<hr/>
+				
+				<h:form>
+					<div class="form-group">
+					    <label>Id</label>
+					    <h:inputText id="input-id" styleClass="form-control" value="#{alumnoControlador.id}">
+					    	<f:validateLength maximum="5"></f:validateLength>
+					    </h:inputText>
+					    <h:message for="input-id"></h:message>
+					 </div>	
+					 <div class="form-group">
+					    <label>Nombre</label>
+					    <h:inputText id="nombre" label="nombre" styleClass="form-control" value="#{alumnoControlador.nombre}">
+					    	<f:validateLength minimum="5" maximum="10" />
+					    </h:inputText>
+					    <h:message for="nombre" style="color:red" />
+					 </div>	
+					 <div class="form-group">
+					    <label>Apellido Paterno</label>
+					    <h:inputText styleClass="form-control" value="#{alumnoControlador.apellidoPaterno}"></h:inputText>
+					 </div>	
+					 <div class="form-group">
+					    <label>Apellido Materno</label>
+					    <h:inputText styleClass="form-control" value="#{alumnoControlador.apellidoMaterno}"></h:inputText>
+					 </div>	
+					 <div class="form-group">
+					    <label>Edad</label>
+					    <h:inputText styleClass="form-control" value="#{alumnoControlador.edad}"></h:inputText>
+					 </div>
+					 
+					 <div class="form-group">
+						<h:commandButton styleClass="btn btn-primary btn-block"
+							value="Guardar" action="#{alumnoControlador.guardar}"></h:commandButton>
+							
+						<h:commandButton styleClass="btn btn-default btn-block"
+							value="Limpiar" action="#{alumnoControlador.limpiar}"></h:commandButton>
+							
+						
+					</div>	
+				</h:form>
+			</div>
+				
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

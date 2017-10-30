@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 import cl.accenture.curso_java.alumno.dao.AlumnoDAO;
 import cl.accenture.curso_java.alumno.modelo.Alumno;
@@ -21,7 +21,7 @@ import cl.accenture.curso_java.alumno.modelo.SinConexionException;
  *
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ListaAlumnoControlador implements Serializable {
 
 	private static final long serialVersionUID = -4122898785805951524L;

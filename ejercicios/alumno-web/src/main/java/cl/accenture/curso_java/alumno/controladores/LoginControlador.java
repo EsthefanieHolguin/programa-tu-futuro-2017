@@ -6,20 +6,21 @@ package cl.accenture.curso_java.alumno.controladores;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author jmaldonado
  *
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class LoginControlador implements Serializable {
 
 	private static final long serialVersionUID = -6848126621941457061L;
 	private String nombreUsuario;
 	private String password;
 	private String mensaje;
+	private boolean error;
 	
 	
 	public LoginControlador() {
@@ -60,8 +61,10 @@ public class LoginControlador implements Serializable {
 	public String iniciarSesion(){
 		if( this.nombreUsuario.equals( "jmaldonado" ) && this.password.equals( "123" )  ){
 			this.mensaje = "";
-			return "listaAlumno";
+			this.error = false;
+			return "principal2?faces-redirect=true";
 		}else{
+			this.error = true;
 			this.mensaje = "Usuario y/o Password incorrectos";
 			return "";
 		}
@@ -74,6 +77,14 @@ public class LoginControlador implements Serializable {
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+
+	public boolean isError() {
+		return error;
+	}
+
+	public void setError(boolean error) {
+		this.error = error;
 	}
 	
 }
